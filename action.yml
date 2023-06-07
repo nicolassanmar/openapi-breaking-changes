@@ -1,0 +1,15 @@
+name: "Check for breaking changes in OpenAPI schema"
+description: "Compare OpenAPI schemas and fails if a breaking change has been detected"
+inputs:
+  old:
+    description: "Old OpenAPI spec"
+    required: true
+  new:
+    description: "New OpenAPI spec"
+    required: true
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.old }}
+    - ${{ inputs.new }}
